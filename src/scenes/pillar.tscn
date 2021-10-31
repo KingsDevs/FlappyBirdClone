@@ -1,0 +1,52 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://assets/sprites/pillar/3.png" type="Texture" id=1]
+[ext_resource path="res://assets/sprites/pillar/4.png" type="Texture" id=2]
+[ext_resource path="res://src/scenes/pillar.gd" type="Script" id=3]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 11.6302, 159.943 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 11.4488, 158.5 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 10, 4.51703 )
+
+[node name="pillar" type="Node2D"]
+script = ExtResource( 3 )
+
+[node name="lower" type="Sprite" parent="."]
+position = Vector2( 0, 93 )
+texture = ExtResource( 1 )
+
+[node name="extension" type="Sprite" parent="lower"]
+position = Vector2( 0, 159.644 )
+texture = ExtResource( 2 )
+
+[node name="KinematicBody2D" type="KinematicBody2D" parent="lower"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="lower/KinematicBody2D"]
+position = Vector2( 0, 80 )
+shape = SubResource( 1 )
+
+[node name="upper" type="Sprite" parent="."]
+position = Vector2( 0, -93 )
+texture = ExtResource( 2 )
+
+[node name="extension" type="Sprite" parent="upper"]
+position = Vector2( 0, -159.5 )
+texture = ExtResource( 1 )
+
+[node name="KinematicBody2D" type="KinematicBody2D" parent="upper"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="upper/KinematicBody2D"]
+position = Vector2( 0, -79.5 )
+shape = SubResource( 2 )
+
+[node name="collider for points" type="Node2D" parent="."]
+
+[node name="KinematicBody2D" type="KinematicBody2D" parent="collider for points"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="collider for points/KinematicBody2D"]
+shape = SubResource( 3 )
